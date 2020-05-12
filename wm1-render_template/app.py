@@ -47,19 +47,19 @@ def custom_render_template(template_name, *args, **kwargs):
         *args - (list) all extra arguments without keywords will be placed here
         **kwargs - (dict) all extra keyword arguments will be placed here 
     """
-    print("These are the kwargs", kwargs)
-
     # Open the file matching template_name inside the templates directory
-    with open("templates/" + template_name, "r") as f:
-        # Read all the contents of that file as a string
-        template_string = f.read()
+    # Read all the contents of that file as a string
     # Iterate through the keys and values of the kwargs dict
-    for k, v in kwargs.items():
-        # Replace all instances of this pattern: {{s}} with the value of that key
-        # NOTE: it will not work with spaces ex. {{ my_key }} , we can use regex to do that
-        # but for the sake of simplicity we can illustrate this point with str.replace
-        template_string = template_string.replace("{{" + k + "}}", v)
+    # Replace all instances of this pattern: {{s}} with the value of that key
     # Return the transformed string
+
+    # NOTE: this function will not work with spaces ex. {{ my_key }} , we can use regex to do that
+    # but for the sake of simplicity we can illustrate this point with str.replace
+
+    with open("templates/" + template_name, "r") as f:
+        template_string = f.read()
+    for k, v in kwargs.items():
+        template_string = template_string.replace("{{" + k + "}}", v)
     return template_string
 
 
