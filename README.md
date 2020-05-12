@@ -1,3 +1,3 @@
-## Web dev microtalks
+## Webdev microsamples
 
-Learn bite-sized lessons flask and web development in Python by reading through code! 
+Learn bite-sized lessons about flask and web development in Python by reading through tiny working snippets of code! 
