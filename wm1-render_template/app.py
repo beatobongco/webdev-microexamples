@@ -4,6 +4,10 @@ We're going to zoom into templates.
 
 HTML file - a file that tells the browser what UI to show 
 Templates - HTML files that allow you to plug in values to variables, conditionally show parts of the UI, loop through lists, etc
+
+Templates are written in Jinja https://jinja.palletsprojects.com/en/2.11.x/
+
+You can see the template file used in this example here: https://github.com/beatobongco/webdev-microexamples/blob/master/wm1-render_template/templates/base.html
 """
 
 from flask import Flask, render_template
