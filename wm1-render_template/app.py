@@ -15,6 +15,21 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
+@app.route("/")
+@app.route("/1")
+def render_template_demo():
+    # This is what the regular use of render_template looks like. You give it the name of your template and several variables to replace
+    r = render_template(
+        "base.html", title="This is my title", content="This is my content"
+    )
+    print("Type:", type(r))
+    print("-" * 42)
+    print("str representation", str(r))
+    print("-" * 42)
+    print("repr representation", repr(r))
+    return r
+
+
 def custom_render_template(template_name, *args, **kwargs):
     """Render an HTML template as a string
     
@@ -41,20 +56,6 @@ def custom_render_template(template_name, *args, **kwargs):
         template_string = template_string.replace("{{" + k + "}}", v)
     # Return the transformed string
     return template_string
-
-
-@app.route("/")
-@app.route("/1")
-def render_template_demo():
-    r = render_template(
-        "base.html", title="This is my title", content="This is my content"
-    )
-    print("Type:", type(r))
-    print("-" * 42)
-    print("str representation", str(r))
-    print("-" * 42)
-    print("repr representation", repr(r))
-    return r
 
 
 @app.route("/2")
