@@ -58,6 +58,11 @@ def custom_render_template(template_name, *args, **kwargs):
     return template_string
 
 
+# The custom_render_template function is an oversimplification of what happens inside render_template
+# but it illustrates that basically in the end it is parsing a string and doing string replacement
+# ref: https://github.com/pallets/jinja/blob/3915eb5c2a7e2e4d49ebdf0ecb167ea9c21c60b2/src/jinja2/environment.py#L924
+
+
 @app.route("/2")
 def demo_page():
     r = custom_render_template(
@@ -75,6 +80,7 @@ def demo_page():
 
 @app.route("/test")
 def test_templating():
+    """A route that tests if the outputs of both fucntions are the same"""
     r = render_template(
         "base.html", title="This is my title", content="This is my content"
     )
@@ -83,3 +89,7 @@ def test_templating():
     )
     assert r == r2
     return "The two results are equivalent"
+
+
+# A challenge: by modifying render_template and custom_render_template inputs and/or the base.html template,
+# how can you force the /test route to fail?
