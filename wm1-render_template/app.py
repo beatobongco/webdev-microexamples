@@ -32,6 +32,9 @@ def render_template_demo():
     return r
 
 
+#
+# Let's try to re-create what's happening inside the render_template function
+#
 def custom_render_template(template_name, *args, **kwargs):
     """Render an HTML template as a string
     
