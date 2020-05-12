@@ -14,14 +14,16 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
+TITLE = "Welcome to Westworld"
+CONTENT = "These violent delights have violent ends"
+#
+# Demo route 1 shows what render_template does
+#
 @app.route("/")
 @app.route("/1")
 def render_template_demo():
     # This is what the regular use of render_template looks like. You give it the name of your template and several variables to replace
-    r = render_template(
-        "base.html", title="This is my title", content="This is my content"
-    )
+    r = render_template("base.html", title=TITLE, content=CONTENT)
     print("Type:", type(r))
     print("-" * 42)
     print("str representation", str(r))
@@ -62,14 +64,12 @@ def custom_render_template(template_name, *args, **kwargs):
 # but it illustrates that basically in the end it is parsing a string and doing string replacement
 # ref: https://github.com/pallets/jinja/blob/3915eb5c2a7e2e4d49ebdf0ecb167ea9c21c60b2/src/jinja2/environment.py#L924
 
-
+#
+# Demo route 2 shows our custom template rendring function doing the exact same thing!
+#
 @app.route("/2")
 def demo_page():
-    r = custom_render_template(
-        "base.html",
-        title="Welcome!",
-        content="These violent delights have violent ends",
-    )
+    r = custom_render_template("base.html", title=TITLE, content=CONTENT)
     print("Type:", type(r))
     print("-" * 42)
     print("str representation", str(r))
