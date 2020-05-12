@@ -82,4 +82,4 @@ def test_templating():
         "base.html", title="This is my title", content="This is my content"
     )
     assert r == r2
-    return "The two functions are equivalent"
+    return "The two results are equivalent"
