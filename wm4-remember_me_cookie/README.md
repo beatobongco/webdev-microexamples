@@ -8,6 +8,6 @@ You can copy the contents of the cookie and open a new incognito window.
 
 Use Chrome Developer Tools to create a new cookie called `remember_token`, pasting the contents of the cookie as its value.
 
-You are now logged in as your test user!
+Refresh the page. You are now logged in as your test user!
 
 ![cookie spoofing](https://raw.githubusercontent.com/beatobongco/webdev-microexamples/master/wm4-remember_me_cookie/cookie_spoof.png)
