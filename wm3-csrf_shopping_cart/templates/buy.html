@@ -1,0 +1,15 @@
+<h1>Crysknives 'R Us</h1>
+<h3>Classic crysknife</h3>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <input type="hidden" name="item_name" value="Crysknife">
+    <p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSbsBFMdYj25s7Dch1Vqsjr7sGdQwuosvWf4DQz4o2uwObbmMX4g&s">
+    </p>
+    <p>Awaken your inner Fremen with this beautiful and classic weapon made from a Shai-hulud's tooth. <br> Perfect for birthdays, anniversaries, or even marriages. <br> <br> Disclaimer: This knife is sharp. Crysknives 'R Us are not responsbile for any untoward accidents that may arise due to this item's usage.</p>
+    <p>
+        Price: 500
+    </p>
+    <p>{{form.quantity.label}} <br> {{form.quantity(size=5)}} </p>
+    <p>{{ form.submit() }}</p>
+</form>
