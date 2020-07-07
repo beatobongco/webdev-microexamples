@@ -30,28 +30,29 @@ def index():
     print(COOKIE_NAME, ":", cookie)
     # >> remember_token : 1|317ae4390a37e7ac78bd4bfb083e6482e068cc9d9a1077ed23df1c3df92fbf1d0503ee435ab52fba09d4a4f53c469b9b938104ff5010bdf56d30b4e56dfd8c42
 
-    # digest in the cookie should match an internal function that returns a string based on the user_id
-    user_id, digest = cookie.rsplit(u"|", 1)
-    print("Cookie digest:", digest)
-    # >> Cookie digest: 317ae4390a37e7ac78bd4bfb083e6482e068cc9d9a1077ed23df1c3df92fbf1d0503ee435ab52fba09d4a4f53c469b9b938104ff5010bdf56d30b4e56dfd8c42
+    if cookie:
+        # digest in the cookie should match an internal function that returns a string based on the user_id
+        user_id, digest = cookie.rsplit(u"|", 1)
+        print("Cookie digest:", digest)
+        # >> Cookie digest: 317ae4390a37e7ac78bd4bfb083e6482e068cc9d9a1077ed23df1c3df92fbf1d0503ee435ab52fba09d4a4f53c469b9b938104ff5010bdf56d30b4e56dfd8c42
 
-    # Cookie digest is a cryptographic function that takes an input and outputs a hash
-    # see: https://docs.python.org/3/library/hmac.html
-    internal_digest = _cookie_digest(user_id)
-    print("Internally generated digest:", internal_digest)
-    # >> Internally generated digest: 317ae4390a37e7ac78bd4bfb083e6482e068cc9d9a1077ed23df1c3df92fbf1d0503ee435ab52fba09d4a4f53c469b9b938104ff5010bdf56d30b4e56dfd8c42
+        # Cookie digest is a cryptographic function that takes an input and outputs a hash
+        # see: https://docs.python.org/3/library/hmac.html
+        internal_digest = _cookie_digest(user_id)
+        print("Internally generated digest:", internal_digest)
+        # >> Internally generated digest: 317ae4390a37e7ac78bd4bfb083e6482e068cc9d9a1077ed23df1c3df92fbf1d0503ee435ab52fba09d4a4f53c469b9b938104ff5010bdf56d30b4e56dfd8c42
 
-    print("Do they match?", digest == internal_digest)
-    # >> Do they match? True
+        print("Do they match?", digest == internal_digest)
+        # >> Do they match? True
 
-    # if they match, return the user_id (called the payload)
-    print("decoded cookie:", decode_cookie(cookie))
-    # >> decoded cookie: 1
+        # if they match, return the user_id (called the payload)
+        print("decoded cookie:", decode_cookie(cookie))
+        # >> decoded cookie: 1
 
-    # Let's try "faking a cookie"
-    fake_cookie = "1|I'mTryingToGuessTheDigest"
-    print("Trying to decode a fake cookie results in:", decode_cookie(fake_cookie))
-    # >> Trying to decode a fake cookie results in: None
+        # Let's try "faking a cookie"
+        fake_cookie = "1|I'mTryingToGuessTheDigest"
+        print("Trying to decode a fake cookie results in:", decode_cookie(fake_cookie))
+        # >> Trying to decode a fake cookie results in: None
 
     posts = [
         {"author": {"username": "John"}, "body": "Beautiful day in Portland!"},
